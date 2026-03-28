@@ -11,6 +11,10 @@ export const GlobalStyle = () => {
           margin: 0;
         }
 
+        html * {
+          font-family: "Inter", sans-serif;
+        }
+
         body {
           background-color: ${COLORS.first_white};
         }
