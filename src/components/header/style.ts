@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 import { COLORS } from "../../styles/colors";
 import { NavLink } from "react-router-dom";
 
-export const Header = styled.header`
+export const Header = styled.header<{ mobile: boolean }>`
   background-color: ${COLORS.white_secondary};
-  padding: 0.94rem 0;
+  padding: ${({ mobile }) => (mobile ? " 1.19rem 0  1.19rem 0" : "0.94rem 0")};
+  position: relative;
 `;
 
 export const Logo = styled(NavLink)`
@@ -26,8 +27,8 @@ export const WrapperHeader = styled.div`
   gap: 0.88rem;
 `;
 
-export const WrapperInput = styled.div`
-  max-width: 448px !important;
+export const WrapperInput = styled.div<{ mobile?: boolean }>`
+  max-width: ${({ mobile }) => (mobile ? "100%" : "448px")}!important;
   width: 100%;
   position: relative;
 
@@ -37,23 +38,23 @@ export const WrapperInput = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
+`;
 
-  input {
-    width: 100%;
-    padding-inline: 2.19rem;
-    padding-block: 0.75rem;
-    border: none;
-    background-color: ${COLORS.input_primary};
-    border-radius: 6px;
-    display: block;
-    outline: 3px solid transparent;
-  }
+export const Input = styled.input`
+  width: 100%;
+  padding-inline: 2.19rem;
+  padding-block: 0.75rem;
+  border: none;
+  background-color: ${COLORS.input_primary};
+  border-radius: 6px;
+  display: block;
+  outline: 3px solid transparent;
 
-  input:focus {
+  &:focus {
     outline: 3px solid ${COLORS.blue_primary};
   }
 
-  input::placeholder {
+  &::placeholder {
     color: ${COLORS.font_secondary};
     font-weight: 500;
   }
@@ -65,13 +66,14 @@ export const WrapperLinks = styled.div`
   gap: 0.44rem;
 `;
 
-export const Link = styled(NavLink)<{ isColor?: string }>`
+export const Link = styled(NavLink)<{ isColor?: string; mobile?: boolean }>`
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   background-color: ${({ isColor }) =>
     isColor ? "trasparent" : COLORS.blue_primary};
   font-size: 0.88rem;
   height: 36px;
+  width: ${({ mobile }) => mobile && "100%"} !important;
   display: flex;
   align-items: center;
   color: ${({ isColor }) =>
@@ -85,4 +87,29 @@ export const Link = styled(NavLink)<{ isColor?: string }>`
     background-color: ${({ isColor }) => isColor && COLORS.green_primary};
     color: ${({ isColor }) => isColor && COLORS.first_white};
   }
+`;
+
+export const WrapperMenuMobile = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.19rem 2rem 1.19rem 2rem;
+  gap: 8px;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  background-color: ${COLORS.white_secondary};
+`;
+
+export const ButtonMobile = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background-color: ${COLORS.green_primary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
 `;
