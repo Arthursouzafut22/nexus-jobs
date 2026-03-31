@@ -27,11 +27,7 @@ export function ButtonMobile({ toggleMenu, isActive }: ButtonProps) {
         {isActive ? (
           <IoMdClose size={20} color={COLORS.white_secondary} />
         ) : (
-          <GiHamburgerMenu
-            size={20}
-            color={COLORS.white_secondary}
-            className={isActive ? "animation-svg-open" : ""}
-          />
+          <GiHamburgerMenu size={20} color={COLORS.white_secondary} />
         )}
       </div>
     </S.ButtonMobile>

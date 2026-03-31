@@ -6,4 +6,5 @@ export const COLORS = {
   green_primary: "#21C45D",
   input_primary: "#F1F5F9",
   font_secondary: "#9BA8BD",
+  white: "#FFFFFF",
 } as const;

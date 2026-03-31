@@ -7,7 +7,6 @@ import { Activity, useCallback, useState } from "react";
 import { ButtonMobile } from "./ButtonMobile";
 import { MenuMobile } from "./MenuMobile";
 
-
 export function Header() {
   const { mobile } = useMedia("(max-width:767px)");
   const [isActive, setIsActive] = useState(false);
