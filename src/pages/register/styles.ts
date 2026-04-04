@@ -39,7 +39,9 @@ export const Form = styled.form`
     font-weight: 500;
     background-color: ${COLORS.blue_primary};
     color: ${COLORS.white};
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     height: 40px;
     cursor: pointer;

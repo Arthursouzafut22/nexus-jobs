@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import * as S from "./styles";
 
 type InputProps = {
@@ -6,11 +6,13 @@ type InputProps = {
   label: string;
 } & ComponentPropsWithoutRef<"input">;
 
-export function Input({ id, label, ...rest }: InputProps) {
-  return (
-    <S.WrapperInput>
-      <S.Label htmlFor={id}>{label}</S.Label>
-      <S.Input {...rest} id={id} />
-    </S.WrapperInput>
-  );
-}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ id, label, ...rest }, ref) => {
+    return (
+      <S.WrapperInput>
+        <S.Label htmlFor={id}>{label}</S.Label>
+        <S.Input {...rest} id={id} ref={ref} />
+      </S.WrapperInput>
+    );
+  }
+);
